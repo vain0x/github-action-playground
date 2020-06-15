@@ -11,13 +11,14 @@ jobs:
     steps:
       - name: check out files
         uses: actions/checkout@v2
-      - name: configure git
-        run: 'git config user.name vain0x && git config user.email vainzerox@gmail.com'
-      - name: switch to master branch
-        run: git switch -c master origin/master
+      - name: git works
+        run: |
+          git config user.name vain0x
+          git config user.email vainzerox@gmail.com
+          git fetch origin master --depth 1
+          git branch master origin/master
+          git symbolic-ref HEAD refs/heads/master
       - name: regenerate readme
         run: cat message.txt message.txt >README.md
-      - name: make commit
+      - name: make commit and upload
         run: 'git add README.md && git commit -m Build && git push origin master || :'
-      - name: upload
-        run: git push origin master

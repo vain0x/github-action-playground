@@ -17,7 +17,7 @@ jobs:
           git config user.email vainzerox@gmail.com
           git fetch origin master --depth 1
           git branch master origin/master
-          git merge branch --no-ff develop -m "Merge branch 'develop'"
+          git merge develop --no-ff -m "Merge branch 'develop'"
       - name: regenerate readme
         run: cat message.txt message.txt >README.md
       - name: make commit and upload

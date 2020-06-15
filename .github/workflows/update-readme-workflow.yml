@@ -6,18 +6,20 @@ on:
 
 jobs:
   build:
-    name: updare readme build
+    name: update readme build
     runs-on: ubuntu-latest
     steps:
       - name: check out files
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: git works
         run: |
           git config user.name vain0x
           git config user.email vainzerox@gmail.com
-          git fetch origin master --depth 1
-          git branch master origin/master
-          git merge branch --no-ff develop -m "Merge branch 'develop'"
+          git fetch origin master
+          git switch -c master origin/master
+          git merge develop --no-ff -m "Merge branch 'develop'"
       - name: regenerate readme
         run: cat message.txt message.txt >README.md
       - name: make commit and upload

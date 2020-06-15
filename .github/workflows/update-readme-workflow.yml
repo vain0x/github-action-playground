@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: updare readme build
+    name: update readme build
     runs-on: ubuntu-latest
     steps:
       - name: check out files

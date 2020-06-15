@@ -14,7 +14,7 @@ jobs:
       - name: configure git
         run: 'git config user.name vain0x && git config user.email vainzerox@gmail.com'
       - name: switch to master branch
-        run: git switch master
+        run: git switch -c master origin/master
       - name: regenerate readme
         run: cat message.txt message.txt >README.md
       - name: make commit

@@ -1,37 +1,23 @@
-name: milone-like workflow
-on:
-  push:
-    branches:
-      - milone
+# name: milone-like workflow
+# on:
+#   push:
+#     branches:
+#       - milone
 
-jobs:
-  build:
-    name: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@main
+# jobs:
+#   build:
+#     name: test
+#     runs-on: ubuntu-latest
+#     env:
+#       DOTNET_NOLOGO: true
+#       DOTNET_CLI_TELEMETRY_OPTOUT: true
+#     steps:
+#       - uses: actions/checkout@main
 
-      # https://github.com/actions/setup-dotnet
-      - uses: actions/setup-dotnet@v1
-        with:
-          # SDK Version to use; x will use the latest version of the 3.1 channel
-          dotnet-version: '3.1.x'
+#       # https://github.com/actions/setup-dotnet
+#       - uses: actions/setup-dotnet@v1
+#         with:
+#           # SDK Version to use; x will use the latest version of the 3.1 channel
+#           dotnet-version: '3.1.x'
 
-      - run: dotnet build <my project>
-
-    steps:
-      - name: check out files
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: git works
-        run: |
-          git config user.name vain0x
-          git config user.email vainzerox@gmail.com
-          git fetch origin master
-          git switch -c master origin/master
-          git merge develop --no-ff -m "Merge branch 'develop'"
-      - name: regenerate readme
-        run: cat message.txt message.txt >README.md
-      - name: make commit and upload
-        run: 'git add README.md && git commit -m Build && git push origin master || :'
+#       - run: ./test

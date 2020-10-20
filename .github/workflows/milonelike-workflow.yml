@@ -1,13 +1,24 @@
-name: Update README
+name: milone-like workflow
 on:
   push:
     branches:
-      - develop
+      - milone
 
 jobs:
   build:
-    name: update readme build
+    name: test
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      # https://github.com/actions/setup-dotnet
+      - uses: actions/setup-dotnet@v1
+        with:
+          # SDK Version to use; x will use the latest version of the 3.1 channel
+          dotnet-version: '3.1.x'
+
+      - run: dotnet build <my project>
+
     steps:
       - name: check out files
         uses: actions/checkout@v2

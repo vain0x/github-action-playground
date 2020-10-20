@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -eu
+
+dotnet run -p MiloneLang >milone.c
+gcc -std=c11 -O3 milone.c -o milone
+./milone >milone_stdout_actual.txt
+diff milone_stdout_actual.txt milone_stdout_expected.txt
+echo OK
